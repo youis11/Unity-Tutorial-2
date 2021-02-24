@@ -14,6 +14,9 @@ public class Sheep : MonoBehaviour
 
     private SheepSpawner sheepSpawner;
 
+    public float heartOffset; // 1
+    public GameObject heartPrefab; // 2
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -38,6 +41,11 @@ public class Sheep : MonoBehaviour
 
         hitByHay = true;
         runSpeed = 0;
+
+        Instantiate(heartPrefab, transform.position + new Vector3(0, heartOffset, 0), Quaternion.identity);
+        TweenScale tweenScale = gameObject.AddComponent<TweenScale>(); ; // 1
+        tweenScale.targetScale = 0; // 2
+        tweenScale.timeToReachTarget = gotHayDestroyDelay; // 3
 
         Destroy(gameObject, gotHayDestroyDelay);
     }
