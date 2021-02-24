@@ -10,7 +10,8 @@ Shoot hay in order to rescue sheeps and get the highest score possible, if you m
 
 Lluis Moreu: https://github.com/youis11 
 
-Github repository: https://github.com/youis11/Unity-Tutorial-2 
+Github repository: https://github.com/youis11/Unity-Tutorial-2
+
 Tutorial: https://www.raywenderlich.com/4180875-introduction-to-unity-scripting-part-2
 
 ## Controls:
