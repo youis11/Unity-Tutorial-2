@@ -8,14 +8,14 @@ Shoot hay in order to rescue sheeps and get the highest score possible, if you m
 
 Even if I knew how to do pretty much everything, this tutorial helped me:
 
-· Remember that I need to delete things of a list not just destroy the gameObjects.
-· Know that you can cache a Script by equaling a public static Instance to "this".
+  - Remember that I need to delete things of a list not just destroy the gameObjects.
 
-· With: 
-```csharp 
-selectedIndex %= Enum.GetValues(typeof(HayMachineColor)).Length; 
-``` 
-you can loop an enum without using IFs.
+  - Know that you can cache a Script by equaling a public static Instance to "this".
+
+  - With the next following line you can loop an enum without using IFs.: 
+  ```csharp 
+  selectedIndex %= Enum.GetValues(typeof(HayMachineColor)).Length; 
+  ```
 
 ## Links
 
