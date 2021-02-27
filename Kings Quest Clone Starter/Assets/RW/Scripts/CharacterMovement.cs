@@ -34,8 +34,68 @@ using UnityEngine;
 namespace RayWenderlich.KQClone.Core
 {
     //TODO: Require statement goes here
+    [RequireComponent(typeof(Animator))]
+
     public class CharacterMovement : MonoBehaviour
     {
+        [SerializeField] private float speed = 2f;
+        private Animator animator;
+        private Vector2 currentDirection = Vector2.zero;
+
+        private void Awake()
+        {
+            animator = GetComponent<Animator>();
+            animator.speed = 0;
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.UpArrow)) ToggleMovement(Vector2.up);
+            if (Input.GetKeyDown(KeyCode.LeftArrow)) ToggleMovement(Vector2.left);
+            if (Input.GetKeyDown(KeyCode.DownArrow)) ToggleMovement(Vector2.down);
+            if (Input.GetKeyDown(KeyCode.RightArrow)) ToggleMovement(Vector2.right);
+        }
+
+
+        private void StopMovement()
+        {
+            animator.speed = 0;
+            StopAllCoroutines();
+        }
+
+        private void ToggleMovement(Vector2 direction)
+        {
+            StopMovement();
+
+            if (currentDirection != direction)
+            {
+                animator.speed = 1;
+                animator.SetInteger("X", (int)direction.x);
+                animator.SetInteger("Y", (int)direction.y);
+                StartCoroutine(MovementRoutine(direction));
+
+                currentDirection = direction;
+            }
+            else
+            {
+                currentDirection = Vector2.zero;
+            }
+        }
+
+        private IEnumerator MovementRoutine(Vector2 direction)
+        {
+            while (true)
+            {
+                transform.Translate(direction * speed * Time.deltaTime);
+                yield return null;
+            }
+        }
+
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            StopMovement();
+        }
 
     }
+
 }
