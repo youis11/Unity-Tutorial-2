@@ -35,6 +35,23 @@ namespace RayWenderlich.KQClone.Core
     [RequireComponent(typeof(SpriteRenderer))]
     public class SetSortingOrder : MonoBehaviour
     {
-        
+        [SerializeField] private float accuracyFactor = 100;
+        private Camera cam;
+        private SpriteRenderer sprite;
+        private float topPoint;
+
+        private void Awake()
+        {
+            sprite = GetComponent<SpriteRenderer>();
+            cam = Camera.main;
+            SetOrder();
+        }
+
+        public void SetOrder()
+        {
+            topPoint = cam.transform.position.y + Camera.main.orthographicSize;
+            sprite.sortingOrder = (int)(Mathf.Abs(topPoint - transform.position.y) * accuracyFactor);
+        }
+
     }
 }

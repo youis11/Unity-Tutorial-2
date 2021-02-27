@@ -34,10 +34,11 @@ using UnityEngine;
 namespace RayWenderlich.KQClone.Core
 {
     //TODO: Require statement goes here
-    [RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof(Animator), typeof(SetSortingOrder))]
 
     public class CharacterMovement : MonoBehaviour
     {
+        private SetSortingOrder sortingScript;
         [SerializeField] private float speed = 2f;
         private Animator animator;
         private Vector2 currentDirection = Vector2.zero;
@@ -46,6 +47,7 @@ namespace RayWenderlich.KQClone.Core
         {
             animator = GetComponent<Animator>();
             animator.speed = 0;
+            sortingScript = GetComponent<SetSortingOrder>();
         }
 
         private void Update()
@@ -87,6 +89,7 @@ namespace RayWenderlich.KQClone.Core
             while (true)
             {
                 transform.Translate(direction * speed * Time.deltaTime);
+                sortingScript.SetOrder();
                 yield return null;
             }
         }

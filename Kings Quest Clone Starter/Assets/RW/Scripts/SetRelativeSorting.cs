@@ -34,6 +34,14 @@ namespace RayWenderlich.KQClone.Core
 {
     public class SetRelativeSorting : MonoBehaviour
     {
-        
+        public SpriteRenderer referenceSprite;
+        public int relativeOrder;
+
+        private void Start()
+        {
+            GetComponent<SpriteRenderer>().sortingOrder =
+                referenceSprite.sortingOrder + relativeOrder;
+        }
+
     }
 }
