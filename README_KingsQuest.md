@@ -4,7 +4,7 @@ King's Quest v.1.0
 
 ## Description
 
-________. This is part of a tutorial, I do not own the visuals of the game.
+When King’s Quest I was released in 1984, its key selling point was the use of non-static screens which responded dynamically to player input. For instance, the player could move the character in realtime. This is part of a tutorial, I do not own the visuals of the game.
 
 This tutorial helped me:
 
@@ -12,10 +12,9 @@ This tutorial helped me:
 
   - Sorting 2D Sprites.
 
-  - With the next following line you can loop an enum without using IFs.: 
-  ```csharp 
-  selectedIndex %= Enum.GetValues(typeof(HayMachineColor)).Length; 
-  ```
+  - Parsing Commands.
+
+  - Add interactable objects.
 
 ## Links
 
@@ -27,13 +26,8 @@ Tutorial: https://www.raywenderlich.com/14048776-how-to-make-an-adventure-game-l
 
 ## Controls:
 
-- ESC (Go to Main Menu).
+- Type something to interact with objects.
 
 ### Player: 
 
 - ARROW KEYS (to move without holding, press the same key to stop).
-
-
-Did you beat the game?
-
-Hope you Enjoy! Thanks for playing.
